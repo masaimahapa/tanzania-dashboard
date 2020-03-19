@@ -1,6 +1,8 @@
 # tanzania-dashboard
 To run the dashboard.
 
+![ScreenShot](https://raw.github.com/masaimahapa/tanzania-dashboard/master/screenshots/dashboard1)
+
 In the terminal, type:
 1. pip install -r requirements.txt
 2. python app.py
