@@ -22,7 +22,14 @@ app.layout= html.Div([
         'color':'Blue'}
         )
     )
-    )
+    ),
+    dcc.Markdown('''
+    **Tanzanian Mobile Money Dashboard**
+
+    Demographic information and what financial services are used by approximately 10,000 individuals across Tanzania. This data was extracted from the FSDT Finscope 2017 survey and prepared specifically for this challenge.
+    geospatial mapping of all cash outlets in Tanzania in 2012. Cash outlets in this case included commercial banks, community banks, ATMs, microfinance institutions, mobile money agents, bus stations and post offices. This data was collected by FSDT.
+    _Developed by Masai Mahapa_
+    ''')
     ,
     html.Br(),
     
@@ -47,6 +54,27 @@ app.layout= html.Div([
 
 
     html.Br(),
+    
+    html.Label('Gender')
+    ,
+    dcc.RadioItems(
+        id='gender-radio',
+    options=[
+        {'label': 'All', 'value': 'all'},
+        {'label': 'Female', 'value': 'female'},
+        {'label': 'Male', 'value': 'male'}
+    ],
+    value='all'
+    ) 
+    ,
+    html.Br(),
+    dcc.Graph(
+        id='ages'
+    )
+    ,
+    dcc.Graph(
+        id='pie', 
+    ),
     html.Label('Income Type'),
     dcc.Dropdown(
         id='income-checklist',
@@ -72,27 +100,6 @@ app.layout= html.Div([
     )  
     ,
     html.Br(),
-    html.Label('Gender')
-    ,
-    dcc.RadioItems(
-        id='gender-radio',
-    options=[
-        {'label': 'All', 'value': 'all'},
-        {'label': 'Female', 'value': 'female'},
-        {'label': 'Male', 'value': 'male'}
-    ],
-    value='all'
-    ) 
-    ,
-    html.Br(),
-    dcc.Graph(
-        id='ages'
-    )
-    ,
-    dcc.Graph(
-        id='pie', 
-    ),
-
     dcc.Graph(
         id='income-types',
         
@@ -107,13 +114,7 @@ app.layout= html.Div([
             width='99%', height='600'
         )
     ),
-    dcc.Markdown('''
-**Tanzanian Mobile Money Dashboard**
-
-Demographic information and what financial services are used by approximately 10,000 individuals across Tanzania. This data was extracted from the FSDT Finscope 2017 survey and prepared specifically for this challenge.
-geospatial mapping of all cash outlets in Tanzania in 2012. Cash outlets in this case included commercial banks, community banks, ATMs, microfinance institutions, mobile money agents, bus stations and post offices. This data was collected by FSDT.
-_Developed by Masai Mahapa_
-''')
+    
 ])
 
 @app.callback(Output('ages', 'figure'),
